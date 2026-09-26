@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-rental-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: car-rental-api
+  template:
+    metadata:
+      labels:
+        app: car-rental-api
+    spec:
+      containers:
+        - name: car-rental-api
+          image: car-rental-api:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: car-rental-config
+            - secretRef:
+                name: car-rental-secrets
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"

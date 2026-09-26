@@ -1,0 +1,26 @@
+# Build results
+bin/
+obj/
+
+# Rider and Visual Studio
+.idea/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Tests and coverage
+TestResults/
+coverage/
+coverage*.xml
+*.trx
+
+# Local files
+*.log
+appsettings.Local.json
+appsettings.Development.json
+
+# Secrets and OS files
+k8s/secret.yaml
+.DS_Store

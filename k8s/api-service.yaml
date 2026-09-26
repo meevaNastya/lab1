@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: car-rental-api
+spec:
+  type: NodePort
+  selector:
+    app: car-rental-api
+  ports:
+    - port: 80
+      targetPort: 8080

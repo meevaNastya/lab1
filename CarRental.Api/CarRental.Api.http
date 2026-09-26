@@ -1,0 +1,19 @@
+@CarRental.Api_HostAddress = http://localhost:5106
+
+GET {{CarRental.Api_HostAddress}}/api/cars
+Accept: application/json
+
+###
+
+GET {{CarRental.Api_HostAddress}}/api/cars/available?startDate=2026-07-10&endDate=2026-07-12&category=Economy&maxPricePerDay=3000
+Accept: application/json
+
+###
+
+POST {{CarRental.Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "your_password"
+}
